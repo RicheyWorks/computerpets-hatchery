@@ -1,36 +1,44 @@
 # Hatchery
 
-**Pet Evolution Lab** — Fusion and genetic breeding game to spawn new variants inside the 210-kind canon.
+**Pet Evolution Lab** — A planned breeding game for previewing legal pet variants before requesting a mint.
 
 Part of [ComputerPets](https://github.com/RicheyWorks/computerpets). Map: [computerpets-ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem).
 
-| | |
+[Status](#status) · [Design](docs/DESIGN.md) · [Contributor start](#contributor-start) · [Ecosystem](https://github.com/RicheyWorks/computerpets-ecosystem)
+
+| Project | At a glance |
 | --- | --- |
-| Status | Design scaffold — loop and engine frozen |
+| Status | Design scaffold; not runnable yet |
 | License | MIT |
 | Tokens | Minigames never mint or burn. Tired overlay, not a dead lineage. |
-| First pet | [Meet Rui first](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional. |
+| First pet | [Flagship start guide](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md) |
 
-## The loop
+## Status
+
+This repository contains a [design](docs/DESIGN.md) and a [source placeholder](src/index.ts). It has no runnable application, build manifest, automated tests, or CI workflow.
+
+The experience, interfaces, integrations, and safeguards below are **implementation plans**, not supported features. The first implementation slice defines the initial contribution target.
+
+## Planned experience
 
 Kennel is the calculator. Hatchery is the toy: drag two pets, watch the whelp table animate, lock a legal variant, send to Minter. Panda × fish is a red X, not a new species.
 
-## Who plays
+## Intended audience
 
 Breeders who want a toy, not a spreadsheet.
 
-## What it is not
+## Out of scope
 
 Not Kennel (that is the calculator). Not a species factory.
 
-## Genre and engine
+## Planned genre and engine
 
 - Genre: **Simulation**
 - Engine: **React / Canvas**
 - Stack: TypeScript · React 19 · Canvas 2D · Kennel genetics API · Atelier preview
-- Default surface: `8080`
+- Proposed surface: `8080`
 
-## Architecture
+## Proposed integration
 
 ```mermaid
 flowchart LR
@@ -39,42 +47,42 @@ flowchart LR
   hatchery -->|commit| minter
 ```
 
-## How you play
+## Proposed play loop
 
 1. Drop two owned pets onto the bench.
 2. See allele dice in real time.
 3. Illegal pair explains why.
 4. Commit whelp → mint request, not an overlay clone.
 
-## First slice
+## First implementation slice
 
-Build this and stop.
+Initial implementation target:
 
 **Drop two owned pets, animate the whelp table, illegal pair is a red X.**
 
-You know it works when: Illegal pair never writes a token. Partial mint keeps the draft.
+Acceptance targets: Illegal pair never writes a token. Partial mint keeps the draft.
 
-## Environment
+## Planned environment
 
 Node 22
 
-## Failure doctrine
+## Planned safeguards
 
 Illegal pair never writes a token. Canvas fail → table still shows odds. Partial mint → Hatchery keeps the draft.
 
-Canon rules that never yield:
+Design constraints:
 
 - 210 living kinds. No illegal hybrids.
 - Overlay pets can get tired, sick, or hide. Tokens are not burned by a minigame.
 - Desktop walk stays the main quest. Closing Hatchery must leave Rui walking.
 
-## Neighbors
+## Related projects
 
-- computerpets-kennel
-- computerpets-lore
-- computerpets-atelier
-- computerpets-minter
-- computerpets-studio
+- [computerpets-kennel](https://github.com/RicheyWorks/computerpets-kennel)
+- [computerpets-lore](https://github.com/RicheyWorks/computerpets-lore)
+- [computerpets-atelier](https://github.com/RicheyWorks/computerpets-atelier)
+- [computerpets-minter](https://github.com/RicheyWorks/computerpets-minter)
+- [computerpets-studio](https://github.com/RicheyWorks/computerpets-studio)
 
 ## Layout
 
@@ -86,13 +94,18 @@ computerpets-hatchery/
   src/                implementation lands here
 ```
 
-## Run (Windows)
+## Contributor start
+
+With Git and PowerShell, clone the scaffold and read its design and source marker:
 
 ```powershell
-cd app; npm install; npm run dev
+git clone https://github.com/RicheyWorks/computerpets-hatchery.git
+Set-Location computerpets-hatchery
+Get-Content .\docs\DESIGN.md
+Get-Content .\src\index.ts
 ```
 
-Meet Rui first via the [flagship start-here](https://github.com/RicheyWorks/computerpets/blob/main/docs/START-HERE.md). This game is optional.
+Start with the [first implementation slice](#first-implementation-slice). Add the minimum project setup and tests needed for that slice, then document verified run commands. The proposed stack above is a design choice; there is no install or launch command for this checkout yet.
 
 ## Links
 
